@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_interceptor/services/services.dart';
 import 'package:flutter_interceptor/widgets/widgets.dart';
 
-class InputScreen extends StatelessWidget {
-  const InputScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_interceptor/screens/input_screen.dart';
+import 'package:flutter_interceptor/screens/login_screen.dart';
 import 'package:flutter_interceptor/screens/register_screen.dart';
 
 void main() {
@@ -126,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: 'Material App',
         initialRoute: 'login',
         routes: {
-          'login': (_) => const InputScreen(),
+          'login': (_) => const LoginScreen(),
           'register': (_) => const RegisterScreen(),
         });
   }

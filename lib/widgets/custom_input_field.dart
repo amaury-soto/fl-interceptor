@@ -34,7 +34,7 @@ class CustomInputField extends StatelessWidget {
     return TextFormField(
       autofocus: true,
       //initialValue: 'Amaury',
-      textCapitalization: TextCapitalization.words,
+      //textCapitalization: TextCapitalization.words,
       keyboardType: keyboardType,
       obscureText: obscureText,
       onChanged: (value) {
