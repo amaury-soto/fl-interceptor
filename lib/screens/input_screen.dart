@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_interceptor/services/services.dart';
 import 'package:flutter_interceptor/widgets/widgets.dart';
 
 class InputScreen extends StatelessWidget {
@@ -10,11 +10,8 @@ class InputScreen extends StatelessWidget {
     final myFormKey = GlobalKey<FormState>();
 
     final Map<String, String> formValues = {
-      "first_name": "Amaury",
-      "last_name": "Soto",
-      "email": "amaury@gmail.com",
-      "password": "12345",
-      "role": "Admin",
+      "user": "",
+      "password": "",
     };
 
     return Scaffold(
@@ -35,25 +32,7 @@ class InputScreen extends StatelessWidget {
                   helperText: 'Digita tu nombre',
                   prefixIcon: Icons.abc_outlined,
                   //suffixIcon: Icons.access_alarm,
-                  formProperty: 'first_name',
-                  formValues: formValues,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                
-                const SizedBox(
-                  height: 20,
-                ),
-                CustomInputField(
-                  labelText: 'Correo',
-                  hintText: 'email',
-                  //icon: Icons.abc,
-                  helperText: 'Digita tu email',
-                  prefixIcon: Icons.mail,
-                  //suffixIcon: Icons.access_alarm,
-                  keyboardType: TextInputType.emailAddress,
-                  formProperty: 'email',
+                  formProperty: 'user',
                   formValues: formValues,
                 ),
                 const SizedBox(
@@ -66,25 +45,27 @@ class InputScreen extends StatelessWidget {
                   helperText: 'Digita tu password',
                   prefixIcon: Icons.password,
                   suffixIcon: Icons.password,
-                  obscureText: true, formProperty: 'password',
+                  obscureText: true,
+                  formProperty: 'password',
                   formValues: formValues,
                   //keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(
                   height: 40,
                 ),
-       
                 ElevatedButton(
                     child: const SizedBox(
                         width: double.infinity,
                         child: Center(child: Text('Login'))),
                     onPressed: () {
-                      FocusScope.of(context).requestFocus(FocusNode());
+                      // FocusScope.of(context).requestFocus(FocusNode());
                       //FocusScope.of(context).unfocus();
                       if (!myFormKey.currentState!.validate()) {
                         print('Form no válido');
                         return;
                       }
+                      final userServices = UserServices();
+                      userServices.login(formValues);
                       print(formValues);
                     }),
               ],
