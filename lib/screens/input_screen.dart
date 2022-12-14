@@ -16,7 +16,7 @@ class InputScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Inputs and forms'),
+        title: const Text('Login'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -65,7 +65,8 @@ class InputScreen extends StatelessWidget {
                         return;
                       }
                       final userServices = UserServices();
-                      userServices.login(formValues);
+                      userServices.login(formValues, context);
+                      //Navigator.pushNamed(context, 'register');
                       print(formValues);
                     }),
               ],

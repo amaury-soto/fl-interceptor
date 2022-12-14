@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_interceptor/screens/input_screen.dart';
+import 'package:flutter_interceptor/screens/register_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -120,14 +121,18 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      body: const InputScreen(),
-
-      floatingActionButton: FloatingActionButton(
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Material App',
+        initialRoute: 'login',
+        routes: {
+          'login': (_) => const InputScreen(),
+          'register': (_) => const RegisterScreen(),
+        });
+  }
+}
+/*  floatingActionButton: FloatingActionButton(
         onPressed: getHttp,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
+      ),  */
