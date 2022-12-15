@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_interceptor/network/dio_client.dart';
+import 'package:flutter_interceptor/storage/token_storage.dart';
 
 class UserServices {
   var dio = DioClient().dio;
@@ -14,7 +15,8 @@ class UserServices {
       var response = await dio.post(
           'https://lp-01-back.azurewebsites.net/api/v1/Autenticacion/login',
           data: user);
-      print(response.data['datos']['token']);
+      TokenStorage().setToken(response.data['datos']['token']);
+      print(TokenStorage().getToken());
       if (response.data['estado'] == true) {
         Navigator.pushNamed(context, 'register');
       }

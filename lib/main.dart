@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_interceptor/screens/login_screen.dart';
-import 'package:flutter_interceptor/screens/register_screen.dart';
+import 'package:flutter_interceptor/screens/screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,8 +52,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
 /*   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_interceptor/services/services.dart';
 import 'package:flutter_interceptor/widgets/widgets.dart';
 
+import '../storage/token_storage.dart';
+
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 
@@ -39,7 +41,7 @@ class RegisterScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                 CustomInputField(
+                CustomInputField(
                   labelText: 'Email',
                   hintText: 'email',
                   //icon: Icons.abc,
