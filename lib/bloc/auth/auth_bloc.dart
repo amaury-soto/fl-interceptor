@@ -11,9 +11,7 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.authRepository) : super(NotLoggedIn()) {
     on<LogInRequested>(_logInUser);
-    on<LogInEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<LogInEvent>((event, emit) => emit(NotLoggedIn()));
   }
 
   final AuthRepository authRepository;
@@ -22,19 +20,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     LogInRequested event,
     Emitter<AuthState> emit,
   ) async {
-    emit(Loading());
+    emit(Cargando());
     try {
       final res = await authRepository.logIn(
           usuario: event.usuario, contrasena: event.contrasena);
-      print('res:::: $res');
+
       if (res['estado'] == true) {
-        print('HEREEEEEEE');
         emit(LoggedInSuccessfully());
-        /*   await locator.setUserToken(userToken: res["token"]).then((value) {
-            emit(LoggedInSuccessfully());
-          }); */
       } else {
-        emit(LoggedInFailed(res['estado']));
+        
+        emit(LoggedInFailed(res['mensaje']));
         emit(NotLoggedIn());
       }
     } catch (e) {

@@ -35,10 +35,18 @@ class _LogInPageState extends State<LogInPageNew> {
               ),
             );
           }
+           if (state is LoggedInFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.error),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
         },
         child: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
-            if (state is Loading) {
+            if (state is Cargando) {
               // Showing the loading indicator while the user is signing in
               return const Center(
                 child: CircularProgressIndicator(),
@@ -128,6 +136,7 @@ class _LogInPageState extends State<LogInPageNew> {
                 ),
               );
             }
+
             return Container();
           },
         ),

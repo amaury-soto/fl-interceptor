@@ -7,8 +7,8 @@ abstract class AuthEvent extends Equatable {
 
 class LogInRequested extends AuthEvent {
   LogInRequested(this.usuario, this.contrasena);
-  final String usuario;
-  final String contrasena;
+  final String? usuario;
+  final String? contrasena;
 }
 
 class LogInEvent extends AuthEvent {}

@@ -34,21 +34,24 @@ class AuthRepository {
   } */
 
   Future<Map<String, dynamic>> logIn(
-      {required String usuario, required String contrasena}) async {
+      {required String? usuario, required String? contrasena}) async {
     Completer<Map<String, dynamic>> completer =
         Completer<Map<String, dynamic>>();
     try {
       final response = await dio.post('${EndPoints.baseUrl}${EndPoints.login}',
           data: {'usuario': usuario, 'contrasena': contrasena});
-      TokenStorage().setToken(response.data['datos']['token']);
+      TokenStorage().setToken(response.data['datos']['token'].toString());
+
       print('response repository!!! $response');
+      print('OTRA COSAAAAAAA ${response.data['estado'].runtimeType}');
+
       if (response.statusCode != 200) {
-        throw Exception('Failed to sign in');
+        throw Exception('Failed SIGN IN BABY :(( ');
       }
 
       completer.complete(response.data);
     } catch (e) {
-      print(e);
+      print('e::: $e');
     }
     return completer.future;
   }
