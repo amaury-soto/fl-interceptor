@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_interceptor/data/endpoints/enpoints.dart';
 import 'package:flutter_interceptor/network/dio_client.dart';
 import 'package:flutter_interceptor/storage/token_storage.dart';
 
@@ -13,7 +14,7 @@ class UserServices {
     };
     try {
       var response = await dio.post(
-          'https://lp-01-back.azurewebsites.net/api/v1/Autenticacion/login',
+         '${EndPoints.baseUrl}${EndPoints.login}',
           data: user);
       TokenStorage().setToken(response.data['datos']['token']);
       print(TokenStorage().getToken());
@@ -35,7 +36,7 @@ class UserServices {
     print('values $values');
     try {
       var response = await dio.post(
-          'https://lp-01-back.azurewebsites.net/api/v1/Autenticacion/crear',
+          '${EndPoints.baseUrl}${EndPoints.register}',
           data: user);
       print('response-register::: $response');
     } catch (e) {
