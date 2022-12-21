@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_interceptor/bloc/auth/auth_bloc.dart';
+import 'package:flutter_interceptor/screens/home_screen.dart';
 import 'package:flutter_interceptor/screens/screens.dart';
 
 class LogInPageNew extends StatefulWidget {
@@ -31,7 +32,7 @@ class _LogInPageState extends State<LogInPageNew> {
             context.read<AuthBloc>();
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => const RegisterScreen(),
+                builder: (context) => const HomeScreen(),
               ),
             );
           }

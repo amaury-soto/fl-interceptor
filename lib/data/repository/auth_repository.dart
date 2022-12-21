@@ -41,9 +41,9 @@ class AuthRepository {
       final response = await dio.post('${EndPoints.baseUrl}${EndPoints.login}',
           data: {'usuario': usuario, 'contrasena': contrasena});
       TokenStorage().setToken(response.data['datos']['token'].toString());
-
+/* 
       print('response repository!!! $response');
-      print('OTRA COSAAAAAAA ${response.data['estado'].runtimeType}');
+      print('OTRA COSAAAAAAA ${response.data['estado'].runtimeType}'); */
 
       if (response.statusCode != 200) {
         throw Exception('Failed SIGN IN BABY :(( ');

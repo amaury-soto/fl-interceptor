@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_interceptor/screens/home_screen.dart';
 import 'package:flutter_interceptor/services/services.dart';
 import 'package:flutter_interceptor/widgets/widgets.dart';
 
@@ -20,6 +21,18 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Register'),
+        actions: [
+  
+          BackButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => const HomeScreen(),
+                ),
+              );
+            },
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
