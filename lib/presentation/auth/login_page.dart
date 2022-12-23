@@ -89,17 +89,18 @@ class _LogInPageState extends State<LogInPageNew> {
                               TextFormField(
                                 keyboardType: TextInputType.text,
                                 controller: _contrasenaController,
+                                
                                 decoration: const InputDecoration(
                                   hintText: 'Password',
                                   border: OutlineInputBorder(),
                                 ),
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
-                                validator: (value) {
+                               /*  validator: (value) {
                                   return value != null && value.length < 6
                                       ? 'Enter min. 6 characters'
                                       : null;
-                                },
+                                }, */
                               ),
                               const SizedBox(height: 40),
                               GestureDetector(
@@ -148,7 +149,7 @@ class _LogInPageState extends State<LogInPageNew> {
   void _authenticateWithEmailAndPassword(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       BlocProvider.of<AuthBloc>(context).add(
-        LogInRequested(_usuarioController.text, _contrasenaController.text),
+        LogInRequested('pablo.salcedog@ab-inbev.com', 'TestUser123'),
       );
     }
   }

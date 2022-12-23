@@ -7,6 +7,8 @@ class DioInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     //final response = await
     options.headers['Authorization'] = 'Bearer ${TokenStorage().getToken()}';
+ ;
+  
     super.onRequest(options, handler);
   }
 

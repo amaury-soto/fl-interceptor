@@ -25,7 +25,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final res = await authRepository.logIn(
           usuario: event.usuario, contrasena: event.contrasena);
 
-      if (res['estado'] == true) {
+      print('res-bloc::: ${res}');
+        if (res != null) {
         emit(LoggedInSuccessfully());
       } else {
         
