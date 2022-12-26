@@ -58,10 +58,12 @@ class AuthRepository {
               data: jsonEncode(params));
 
       final userResponse = jsonDecode(response.data);
-      //TokenStorage().setToken(userResponse['AuthenticationResult']['AccessToken']);
+      TokenStorage()
+          .setToken(userResponse['AuthenticationResult']['AccessToken']);
 
       print('response.statusCode!!! ${response.statusCode}');
-      if (response.statusCode != 200) {
+      if ( userResponse.hashCode == false) {
+        print('HERE PLEASE');
         throw Exception('Failed SIGN IN BABY :(( ');
       }
 

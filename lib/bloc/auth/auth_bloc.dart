@@ -30,7 +30,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(LoggedInSuccessfully());
       } else {
         
-        emit(LoggedInFailed(res['mensaje']));
+        emit(LoggedInFailed(res.toString()));
         emit(NotLoggedIn());
       }
     } catch (e) {
