@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:aws_signature_v4/aws_signature_v4.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_interceptor/data/repository/auth_repository.dart';
@@ -25,7 +26,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final res = await authRepository.logIn(
           usuario: event.usuario, contrasena: event.contrasena);
 
-      print('res-bloc::: ${res}');
+      //print('res-bloc::: ${res}');
         if (res != null) {
         emit(LoggedInSuccessfully());
       } else {

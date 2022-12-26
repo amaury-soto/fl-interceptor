@@ -57,19 +57,24 @@ class AuthRepository {
               }),
               data: jsonEncode(params));
 
-      final userResponse = jsonDecode(response.data);
+      //print(response);
+      final userResponse = await jsonDecode(response.data);
+      //print('userResponse::::: $userResponse');
       TokenStorage()
           .setToken(userResponse['AuthenticationResult']['AccessToken']);
 
-      print('response.statusCode!!! ${response.statusCode}');
-      if ( userResponse.hashCode == false) {
+      //print('response.statusCode!!! ${response.statusCode}');
+      if (userResponse.hashCode == false) {
         print('HERE PLEASE');
         throw Exception('Failed SIGN IN BABY :(( ');
       }
 
       completer.complete(userResponse['AuthenticationResult']);
     } catch (e) {
-      print('e::: $e');
+      if (e is DioError) {
+        throw Exception('${e.error}');
+      }
+      throw Exception(e);
     }
     return completer.future;
   }
